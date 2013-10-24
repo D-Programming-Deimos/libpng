@@ -1,11 +1,16 @@
 {
-	"name": "DerelictPNG",
-	"description": "An example project skeleton",
-	"homepage": "http://example.org",
-	"copyright": "Copyright © 2000, Your Name",
+	"name": "derelict-png",
+	"description": "D bindings to libpng.",
+	"homepage": "https://github.com/lionello/DerelictPNG",
+	"license": "Boost",
 	"authors": [
-		"Your Name"
+		"Lionello Lunesu"
 	],
+
+	"targetName": "DerelictPNG",
+	"targetPath": "lib",
+
 	"dependencies": {
-	}
+	},
+	"libs": ["png"]
 }

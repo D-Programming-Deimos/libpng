@@ -1,15 +1,12 @@
 {
-	"name": "derelict-png",
+	"name": "libpng",
 	"description": "D bindings to libpng.",
-	"homepage": "https://github.com/lionello/DerelictPNG",
+	"homepage": "http://libpng.org/",
 	"license": "Boost",
 	"authors": [
 		"Lionello Lunesu"
 	],
-
-	"targetName": "DerelictPNG",
-	"targetPath": "lib",
-
+	"targetType": "sourceLibrary",
 	"dependencies": {
 	},
 	"libs": ["png"]

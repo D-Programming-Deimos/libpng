@@ -1515,12 +1515,12 @@ void png_write_row
  * of libpng and to allow the 'display_row' array from read_rows to be passed
  * unchanged to write_rows.
  */
-void png_write_rows(png_structp png_ptr, png_bytepp row,
+void png_write_rows(png_structp png_ptr, in png_bytepp row,
     uint num_rows);
 
 /* Write the image data */
 void png_write_image
-    (png_structp png_ptr, png_bytepp image);
+    (png_structp png_ptr, in png_bytepp image);
 
 /* Write the end of the PNG file. */
 void png_write_end

@@ -4,7 +4,8 @@
 	"homepage": "http://libpng.org/",
 	"license": "Boost",
 	"authors": [
-		"Lionello Lunesu"
+		"Lionello Lunesu",
+		"Rémi Thebault"
 	],
 	"targetType": "sourceLibrary",
 	"dependencies": {

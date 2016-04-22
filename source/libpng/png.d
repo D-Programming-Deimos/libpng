@@ -770,7 +770,7 @@ static if(PNG_STORE_UNKNOWN_CHUNKS_SUPPORTED || PNG_USER_CHUNKS_SUPPORTED) {
  */
 struct png_unknown_chunk
 {
-    png_byte name[5]; /* Textual chunk name with '\0' terminator */
+    png_byte[5] name; /* Textual chunk name with '\0' terminator */
     png_byte *data;   /* Data, should not be modified on read! */
     png_size_t size;
 
@@ -1167,7 +1167,7 @@ deprecated png_const_charp png_convert_to_rfc1123
     (png_structrp png_ptr, png_const_timep ptime);
 }
 
-int png_convert_to_rfc1123_buffer(char out_[29], png_const_timep ptime);
+int png_convert_to_rfc1123_buffer(char[29] out_, png_const_timep ptime);
 
 }
 
@@ -2822,7 +2822,7 @@ struct png_image
 
    png_uint_32  warning_or_error;
 
-   char         message[64];
+   char[64]     message;
 };
 alias png_imagep = png_image*;
 

@@ -1552,7 +1552,7 @@ void png_destroy_read_struct(png_structpp png_ptr_ptr,
     png_infopp info_ptr_ptr, png_infopp end_info_ptr_ptr);
 
 /* Free any memory associated with the png_struct and the png_info_structs */
-void png_destroy_write_struct(png_structrp png_ptr_ptr,
+void png_destroy_write_struct(png_structpp png_ptr_ptr,
     png_infopp info_ptr_ptr);
 
 /* Set the libpng method of handling chunk CRC errors */

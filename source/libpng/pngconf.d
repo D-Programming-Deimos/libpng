@@ -19,13 +19,12 @@ module libpng.pngconf;
  * and png_info.
  */
 
+public:
 
 /* For png_FILE_p - this provides the standard definition of a
  * FILE
  */
 import core.stdc.stdio : FILE;
-
-public:
 
 /* Some typedefs to get us started.  These should be safe on most of the common
 * platforms.

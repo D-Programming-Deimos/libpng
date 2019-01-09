@@ -1,7 +1,9 @@
 module libpng.pnglibconf;
+/* libpng 1.6.17 STANDARD API DEFINITION */
+
 /* pnglibconf.h - library build configuration */
 
-/* libpng version 1.6.16,December 22, 2014 */
+/* Libpng version 1.6.17 - March 26, 2015 */
 
 /* Copyright (c) 1998-2014 Glenn Randers-Pehrson */
 
@@ -128,6 +130,7 @@ enum PNG_WRITE_ANCILLARY_CHUNKS_SUPPORTED           = 1;
 enum PNG_WRITE_BGR_SUPPORTED                        = 1;
 enum PNG_WRITE_CHECK_FOR_INVALID_INDEX_SUPPORTED    = 1;
 enum PNG_WRITE_COMPRESSED_TEXT_SUPPORTED            = 1;
+enum PNG_WRITE_CUSTOMIZE_COMPRESSION_SUPPORTED      = 1;
 enum PNG_WRITE_CUSTOMIZE_ZTXT_COMPRESSION_SUPPORTED = 1;
 enum PNG_WRITE_FILLER_SUPPORTED                     = 1;
 enum PNG_WRITE_FILTER_SUPPORTED                     = 1;
@@ -197,6 +200,10 @@ enum PNG_QUANTIZE_GREEN_BITS = 5;
 enum PNG_QUANTIZE_RED_BITS = 5;
 enum PNG_TEXT_Z_DEFAULT_COMPRESSION = -1;
 enum PNG_TEXT_Z_DEFAULT_STRATEGY = 0;
+enum PNG_USER_CHUNK_CACHE_MAX = 1000;
+enum PNG_USER_CHUNK_MALLOC_MAX = 8000000;
+enum PNG_USER_HEIGHT_MAX = 1000000;
+enum PNG_USER_WIDTH_MAX = 1000000;
 enum PNG_WEIGHT_SHIFT = 8;
 enum PNG_ZBUF_SIZE = 8192;
 enum PNG_ZLIB_VERNUM = 0x1280;

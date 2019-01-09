@@ -1,8 +1,9 @@
 module libpng.png;
 /* png.h - header file for PNG reference library
  *
- * libpng version 1.6.16, December 22, 2014
- * Copyright (c) 1998-2014 Glenn Randers-Pehrson
+ * libpng version 1.6.17, March 26, 2015
+ *
+ * Copyright (c) 1998-2015 Glenn Randers-Pehrson
  * (Version 0.96 Copyright (c) 1996, 1997 Andreas Dilger)
  * (Version 0.88 Copyright (c) 1995, 1996 Guy Eric Schalnat, Group 42, Inc.)
  *
@@ -11,7 +12,7 @@ module libpng.png;
  * Authors and maintainers:
  *   libpng versions 0.71, May 1995, through 0.88, January 1996: Guy Schalnat
  *   libpng versions 0.89c, June 1996, through 0.96, May 1997: Andreas Dilger
- *   libpng versions 0.97, January 1998, through 1.6.16, December 22, 2014: Glenn
+ *   libpng versions 0.97, January 1998, through 1.6.17, March 26, 2015: Glenn
  *   See also "Contributing Authors", below.
  *
  * Note about libpng version numbers:
@@ -212,6 +213,9 @@ module libpng.png;
  *    1.6.16beta01-03         16    10616  16.so.16.16[.0]
  *    1.6.16rc01-02           16    10616  16.so.16.16[.0]
  *    1.6.16                  16    10616  16.so.16.16[.0]
+ *    1.6.17beta01-06         16    10617  16.so.16.17[.0]
+ *    1.6.17rc01-06           16    10617  16.so.16.17[.0]
+ *    1.6.17                  16    10617  16.so.16.17[.0]
  *
  *   Henceforth the source version will match the shared-library major
  *   and minor numbers; the shared-library major version number will be
@@ -243,8 +247,8 @@ module libpng.png;
  *
  * This code is released under the libpng license.
  *
- * libpng versions 1.2.6, August 15, 2004, through 1.6.16, December 22, 2014, are
- * Copyright (c) 2004, 2006-2014 Glenn Randers-Pehrson, and are
+ * libpng versions 1.2.6, August 15, 2004, through 1.6.17, March 26, 2015, are
+ * Copyright (c) 2004, 2006-2015 Glenn Randers-Pehrson, and are
  * distributed according to the same disclaimer and license as libpng-1.2.5
  * with the following individual added to the list of Contributing Authors:
  *
@@ -355,13 +359,13 @@ module libpng.png;
  * Y2K compliance in libpng:
  * =========================
  *
- *    December 22, 2014
+ *    March 26, 2015
  *
  *    Since the PNG Development group is an ad-hoc body, we can't make
  *    an official declaration.
  *
  *    This is your unofficial assurance that libpng from version 0.71 and
- *    upward through 1.6.16 are Y2K compliant.  It is my belief that
+ *    upward through 1.6.17 are Y2K compliant.  It is my belief that
  *    earlier versions were also Y2K compliant.
  *
  *    Libpng only has two year fields.  One is a 2-byte unsigned integer
@@ -420,9 +424,9 @@ module libpng.png;
  */
 
 /* Version information for png.h - this should match the version in png.c */
-enum PNG_LIBPNG_VER_STRING = "1.6.16";
+enum PNG_LIBPNG_VER_STRING = "1.6.17";
 enum PNG_HEADER_VERSION_STRING =
-     " libpng version 1.6.16 - December 22, 2014\n";
+     " libpng version 1.6.17 - March 26, 2015\n";
 
 enum PNG_LIBPNG_VER_SONUM  = 16;
 enum PNG_LIBPNG_VER_DLLNUM = 16;
@@ -430,7 +434,7 @@ enum PNG_LIBPNG_VER_DLLNUM = 16;
 /* These should match the first 3 components of PNG_LIBPNG_VER_STRING: */
 enum PNG_LIBPNG_VER_MAJOR   = 1;
 enum PNG_LIBPNG_VER_MINOR   = 6;
-enum PNG_LIBPNG_VER_RELEASE = 16;
+enum PNG_LIBPNG_VER_RELEASE = 17;
 
 /* This should match the numeric part of the final component of
  * PNG_LIBPNG_VER_STRING, omitting any leading zero:
@@ -461,7 +465,7 @@ alias PNG_LIBPNG_BUILD_BASE_TYPE = PNG_LIBPNG_BUILD_STABLE;
  * version 1.0.0 was mis-numbered 100 instead of 10000).  From
  * version 1.0.1 it's    xxyyzz, where x=major, y=minor, z=release
  */
-enum PNG_LIBPNG_VER = 10616; /* 1.6.16 */
+enum PNG_LIBPNG_VER = 10617; /* 1.6.17 */
 
 /* Library configuration: these options cannot be changed after
  * the library has been built.
@@ -570,7 +574,7 @@ extern (C) {
 /* This triggers a compiler error in png.c, if png.c and png.h
  * do not agree upon the version number.
  */
-alias png_libpng_version_1_6_16 = char*;
+alias png_libpng_version_1_6_17 = char*;
 
 /* Basic control structions.  Read libpng-manual.txt or libpng.3 for more info.
  *
@@ -1575,6 +1579,7 @@ enum PNG_CRC_WARN_USE = 3;  /* warn/use data       warn/use data     */
 enum PNG_CRC_QUIET_USE = 4;  /* quiet/use data      quiet/use data    */
 enum PNG_CRC_NO_CHANGE = 5;  /* use current value   use current value */
 
+static if(PNG_WRITE_SUPPORTED){
 /* These functions give the user control over the scan-line filtering in
  * libpng and the compression methods used by zlib.  These functions are
  * mainly useful for testing, as the defaults should work with most users.
@@ -1588,6 +1593,7 @@ enum PNG_CRC_NO_CHANGE = 5;  /* use current value   use current value */
  */
 void png_set_filter
     (png_structrp png_ptr, int method, int filters);
+} /* WRITE */
 
 /* Flags for png_set_filter() to say which filters to use.  The flags
  * are chosen so that they don't conflict with real filter types
@@ -1613,6 +1619,7 @@ enum PNG_FILTER_VALUE_AVG = 3;
 enum PNG_FILTER_VALUE_PAETH = 4;
 enum PNG_FILTER_VALUE_LAST = 5;
 
+static if(PNG_WRITE_SUPPORTED){
 static if(PNG_WRITE_WEIGHTED_FILTER_SUPPORTED){ /* EXPERIMENTAL */
 /* The "heuristic_method" is given by one of the PNG_FILTER_HEURISTIC_
  * defines, either the default (minimum-sum-of-absolute-differences), or
@@ -1659,7 +1666,6 @@ enum PNG_FILTER_HEURISTIC_UNWEIGHTED = 1;  /* Used by libpng < 0.95 */
 enum PNG_FILTER_HEURISTIC_WEIGHTED = 2;  /* Experimental feature */
 enum PNG_FILTER_HEURISTIC_LAST = 3;  /* Not a valid value */
 
-static if(PNG_WRITE_SUPPORTED){
 /* Set the library compression level.  Currently, valid values range from
  * 0 - 9, corresponding directly to the zlib compression levels 0 - 9
  * (0 - no compression, 9 - "maximal" compression).  Note that tests have
@@ -1667,6 +1673,7 @@ static if(PNG_WRITE_SUPPORTED){
  * for PNG images, and do considerably fewer caclulations.  In the future,
  * these values may not correspond directly to the zlib compression levels.
  */
+static if(PNG_WRITE_CUSTOMIZE_COMPRESSION_SUPPORTED){
 void png_set_compression_level
     (png_structrp png_ptr, int level);
 
@@ -1684,7 +1691,7 @@ void png_set_compression_window_bits(png_structrp png_ptr,
 
 void png_set_compression_method(png_structrp png_ptr,
     int method);
-}
+} /* WRITE_CUSTOMIZE_COMPRESSION */
 
 static if(PNG_WRITE_CUSTOMIZE_ZTXT_COMPRESSION_SUPPORTED){
 /* Also set zlib parameters for compressing non-IDAT chunks */
@@ -1705,7 +1712,8 @@ void png_set_text_compression_window_bits(png_structrp
 
 void png_set_text_compression_method(png_structrp png_ptr,
     int method);
-} /* PNG_WRITE_CUSTOMIZE_ZTXT_COMPRESSION_SUPPORTED */
+} /* WRITE_CUSTOMIZE_ZTXT_COMPRESSION */
+} /* WRITE */
 
 /* These next functions are called for input/output, memory, and error
  * handling.  They are in the file pngrio.c, pngwio.c, and pngerror.c,
@@ -1817,7 +1825,7 @@ static if(PNG_READ_USER_CHUNKS_SUPPORTED){
  *
  * The integer return from the callback function is interpreted thus:
  *
- * negative: An error occured, png_chunk_error will be called.
+ * negative: An error occurred, png_chunk_error will be called.
  *     zero: The chunk was not handled, the chunk will be saved. A critical
  *           chunk will cause an error at this point unless it is to be saved.
  * positive: The chunk was handled, libpng will ignore/discard it.
